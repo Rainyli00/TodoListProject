@@ -1,4 +1,4 @@
-// tüm elementleri seçmek
+// tüm elementleri seçmer
 const form = document.querySelector("#todoAddForm");
 const input = document.querySelector("#todoName");
 const todoList = document.querySelector(".list-group");
@@ -10,7 +10,7 @@ let todos = [];
 
 runEvents();
 
-
+// elementlere event ekleriz ve bu fonksiyonla uygulamayı başlatır.
 function runEvents() {
 
     form.addEventListener("submit", addTodo);
@@ -21,7 +21,7 @@ function runEvents() {
   
 
 }
-
+// todo ekleme fonksiyonu burdan iki fonksiyonuda kullanırız ve todoları hem uı a hemde local storage a ekleriz.
 function addTodo(e) {
 
     const todoName = input.value.trim();
@@ -36,7 +36,7 @@ function addTodo(e) {
     e.preventDefault();
 }
 
-
+// uı a element oluşturarak todo ekler
 function addTodoToUI(todo) {
 
     const li = document.createElement("li");
@@ -60,7 +60,7 @@ function addTodoToUI(todo) {
 
 }
 
-
+// local storagea todo ekler
 function addTodoToStorage(todo) {
     checkTodos();
     todos.push(todo);
@@ -68,6 +68,7 @@ function addTodoToStorage(todo) {
 
 }
 
+// local storageden todoları kontrol eder
 function checkTodos() {
     if (localStorage.getItem("todos") === null) {
         todos = [];
@@ -77,6 +78,7 @@ function checkTodos() {
 
 }
 
+// sayfa yüklenince uı a todoları getirir
 function LoadStorageTodos() {
     checkTodos();
 
@@ -85,6 +87,7 @@ function LoadStorageTodos() {
     });
 }
 
+// Geri Bildirim mesajı oluşturur
 function ShowMessage(type, message) {
     const div = document.createElement("div");
     div.className = `alert alert-${type}`;
@@ -96,6 +99,7 @@ function ShowMessage(type, message) {
     }, 2500);
 }
 
+// ana remove fonksiyonu burdan 2 fonksiyonada ulaşıyoruz hem uı dan hemde local storage dan todoları siler
 function removeTodo(e) {
 
     const todo = removeTodoUI(e);
@@ -132,7 +136,7 @@ function removeTodoFromStorage(todo) {
 
 }
 
-
+// tüm todoları uı dan ve local storagedan temizler
 function allTodoClear() {
     const todolistesi = document.querySelectorAll(".list-group-item");
     // ekrandan silme
@@ -151,7 +155,7 @@ function allTodoClear() {
     }
 }
 
-
+// todo filtrelemek için kullanılır
 function filterTodos(e) {
     const filterValue = e.target.value.toLowerCase().trim();
     const todos = document.querySelectorAll(".list-group-item");
