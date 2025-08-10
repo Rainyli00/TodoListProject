@@ -1,2 +1,0 @@
-# TodoListProject
-Todo List Projesi
